@@ -1,15 +1,27 @@
 {
-  "name": "typescript-back-template",
+  "name": "sing-me-a-song",
   "version": "1.0.0",
   "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "dev:test": "dotenv -e .env.test nodemon src/server.ts",
+    "prisma-prod": "prisma migrate deploy",
+    "prisma-test": "dotenv -e .env.test prisma migrate reset --skip-seed",
+    "test": "npm run prisma-test && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- -i"
   },
-  "keywords": [],
+  "keywords": [
+    "jest",
+    "supertest",
+    "express",
+    "node",
+    "typescript"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",

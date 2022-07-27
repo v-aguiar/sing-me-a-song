@@ -4,6 +4,7 @@
     "module": "es6",
     "moduleResolution": "node",
     "outDir": "dist",
+    "strict": true,
     "target": "ES6"
   },
   "ts-node": {

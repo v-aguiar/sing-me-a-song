@@ -11,7 +11,7 @@
     "dev:test": "dotenv -e .env.test nodemon src/server.ts",
     "prisma-prod": "prisma migrate deploy",
     "prisma-test": "dotenv -e .env.test prisma migrate reset --skip-seed",
-    "test": "npm run prisma-test && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- -i"
+    "test": "npm run prisma-test && NODE_OPTION=--experimental-vm-modules dotenv -e .env.test jest -- -i"
   },
   "keywords": [
     "jest",
@@ -23,6 +23,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",

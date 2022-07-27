@@ -8,7 +8,13 @@ const scenarioFactory = {
     const recommendation4 = await recommendationFactory.createRecommendation();
     const recommendation5 = await recommendationFactory.createRecommendation();
 
-    return { recommendation1, recommendation2, recommendation3, recommendation4, recommendation5 };
+    return [
+      { ...recommendation1 },
+      { ...recommendation2 },
+      { ...recommendation3 },
+      { ...recommendation4 },
+      { ...recommendation5 },
+    ];
   },
 };
 

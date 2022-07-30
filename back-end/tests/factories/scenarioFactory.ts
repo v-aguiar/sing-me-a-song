@@ -1,4 +1,5 @@
-﻿import recommendationFactory from "./recommendationFactory.js";
+﻿import { prisma } from "../../src/database.js";
+import recommendationFactory from "./recommendationFactory.js";
 
 const scenarioFactory = {
   createScenarioWithFiveRecommendations: async () => {
@@ -15,6 +16,35 @@ const scenarioFactory = {
       { ...recommendation4 },
       { ...recommendation5 },
     ];
+  },
+
+  createScenarioWithTwentyRecommendations: async () => {
+    const recommendations = [];
+    for (let i = 0; i < 20; i++) {
+      recommendations.push(await recommendationFactory.createRecommendation());
+    }
+
+    return recommendations;
+  },
+
+  createScenarioWithOneUpvotedRecommendation: async () => {
+    const recommendation = await recommendationFactory.createRecommendation();
+    const updatedRecommendation = await prisma.recommendation.update({
+      where: { id: recommendation.id },
+      data: { score: 1 },
+    });
+
+    return { ...updatedRecommendation };
+  },
+
+  createScenarioWithNegativeScoreLimitRecommendation: async () => {
+    const recommendation = await recommendationFactory.createRecommendation();
+    const updatedRecommendation = await prisma.recommendation.update({
+      where: { id: recommendation.id },
+      data: { score: -5 },
+    });
+
+    return { ...updatedRecommendation };
   },
 };
 

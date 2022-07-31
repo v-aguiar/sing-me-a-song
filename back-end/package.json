@@ -11,7 +11,8 @@
     "dev:test": "dotenv -e .env.test nodemon src/server.ts",
     "prisma-prod": "prisma migrate deploy",
     "prisma-test": "dotenv -e .env.test prisma migrate reset --skip-seed",
-    "test": "npm run prisma-test && NODE_OPTION=--experimental-vm-modules dotenv -e .env.test jest -- -i"
+    "test": "npm run prisma-test && NODE_OPTION=--experimental-vm-modules dotenv -e .env.test jest -- -i",
+    "test:unit": "NODE_OPTION=--experimental-vm-modules dotenv -e .env.test jest -- -i --coverage --testPathPattern=./tests/unit"
   },
   "keywords": [
     "jest",

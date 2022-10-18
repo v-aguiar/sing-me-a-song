@@ -3,7 +3,11 @@ import { faker } from "@faker-js/faker";
 const URL = "http://localhost:3000";
 
 Cypress.Commands.add("resetDatabase", () => {
-  cy.request("DELETE", "http://localhost:5000/recommendations/truncate");
+  cy.request({
+    method: "DELETE",
+    url: "http://localhost:5000/recommendations/truncate",
+    failOnStatusCode: false,
+  });
 });
 
 Cypress.Commands.add("createRecommendation", () => {
